@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { BrowserFrame } from './Frame'
+import { useId, useState } from 'react'
+import { STATUS_COLOR } from '../CaseCharts'
+import { BrowserFrame, MockupCard } from './Frame'
 
 type View = 'volume' | 'readiness' | 'salute'
 
@@ -9,23 +10,28 @@ const VIEWS: { id: View; label: string }[] = [
   { id: 'salute', label: 'Salute' },
 ]
 
+// SVG gradient ids are built from these colors below, so they must stay plain
+// hex strings (not CSS var()/color-mix()) — url(#glow-var(...)) would break.
+const VOLUME_COLOR = '#c1449c'
+
 // glow color per view
 const GLOW: Record<View, { color: string; label: string; sub: string }> = {
-  volume: { color: '#c1449c', label: 'Tonnellaggio zona', sub: 'Gambe · alto carico' },
-  readiness: { color: '#e8b93a', label: 'Neural Demand 62', sub: 'Da monitorare · stima' },
-  salute: { color: '#46c98a', label: 'ACWR 1,00', sub: 'Sweet spot · nessun dolore' },
+  volume: { color: VOLUME_COLOR, label: 'Tonnellaggio zona', sub: 'Gambe · alto carico' },
+  readiness: { color: STATUS_COLOR.warn, label: 'Neural Demand 62', sub: 'Da monitorare · stima' },
+  salute: { color: STATUS_COLOR.ok, label: 'ACWR 1,00', sub: 'Sweet spot · nessun dolore' },
 }
 
-function Body({ color, back = false }: { color: string; back?: boolean }) {
+function Body({ color }: { color: string }) {
+  const gradientId = useId()
   return (
     <svg viewBox="0 0 60 130" className="h-32 w-auto" aria-hidden="true">
       <defs>
-        <radialGradient id={`glow-${color}-${back}`} cx="50%" cy="40%" r="60%">
+        <radialGradient id={gradientId} cx="50%" cy="40%" r="60%">
           <stop offset="0%" stopColor={color} stopOpacity="0.55" />
           <stop offset="100%" stopColor={color} stopOpacity="0" />
         </radialGradient>
       </defs>
-      <ellipse cx="30" cy="60" rx="34" ry="60" fill={`url(#glow-${color}-${back})`} />
+      <ellipse cx="30" cy="60" rx="34" ry="60" fill={`url(#${gradientId})`} />
       <g fill="#241f1f" stroke={color} strokeOpacity="0.85" strokeWidth="1.4">
         <circle cx="30" cy="12" r="8" />
         <path d="M22 21 h16 l4 22 -6 3 -2 -14 v18 l4 44 -7 1 -3 -40 -3 40 -7 -1 4 -44 v-18 l-2 14 -6 -3 z" />
@@ -72,7 +78,7 @@ export default function CommandCenterMockup() {
 
       <div className="grid grid-cols-1 gap-3 px-4 pb-5 sm:grid-cols-2">
         {['Luca RedFlag', 'Marco LaMacchina'].map((athlete, idx) => {
-          const color = idx === 0 && view === 'readiness' ? '#e5533f' : g.color
+          const color = idx === 0 && view === 'readiness' ? STATUS_COLOR.alarm : g.color
           const label =
             idx === 0 && view === 'readiness'
               ? 'Tap Test < baseline'
@@ -80,10 +86,7 @@ export default function CommandCenterMockup() {
           const sub =
             idx === 0 && view === 'readiness' ? 'Allarme · dato oggettivo' : g.sub
           return (
-            <div
-              key={athlete}
-              className="rounded-xl border border-line-soft bg-panel px-3 py-3"
-            >
+            <MockupCard key={athlete}>
               <div className="mb-2 flex items-center justify-between">
                 <span className="text-[0.75rem] font-semibold text-ink">{athlete}</span>
                 <span
@@ -93,7 +96,7 @@ export default function CommandCenterMockup() {
               </div>
               <div className="flex items-end justify-center gap-1">
                 <Body color={color} />
-                <Body color={color} back />
+                <Body color={color} />
               </div>
               <div className="mt-2 text-center">
                 <div className="font-display text-[0.72rem] font-bold" style={{ color }}>
@@ -101,7 +104,7 @@ export default function CommandCenterMockup() {
                 </div>
                 <div className="text-[0.62rem] text-ink-dim">{sub}</div>
               </div>
-            </div>
+            </MockupCard>
           )
         })}
       </div>

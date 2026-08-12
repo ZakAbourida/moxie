@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   const emitSourcemaps = mode === 'development'
 
   return {
-    base: process.env.FIGMA_PUBLIC_URL ? `${process.env.FIGMA_PUBLIC_URL}/` : '/',
+    base: resolveBase(),
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
@@ -41,6 +41,18 @@ export default defineConfig(({ mode }) => {
     },
   }
 })
+
+/**
+ * Figma Make previews set FIGMA_PUBLIC_URL to the preview's mount path.
+ * The GitHub Pages workflow sets GITHUB_PAGES_BASE to `/<repo>/` for a
+ * project site (or `/` for a `<user>.github.io` root site). Falls back to
+ * root for local dev/preview builds.
+ */
+function resolveBase(): string {
+  if (process.env.FIGMA_PUBLIC_URL) return `${process.env.FIGMA_PUBLIC_URL}/`
+  if (process.env.GITHUB_PAGES_BASE) return process.env.GITHUB_PAGES_BASE
+  return '/'
+}
 
 type FigmaSiteConfiguration = {
   title?: string

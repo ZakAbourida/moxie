@@ -1,4 +1,4 @@
-import { Wrap } from './ui'
+import { Badge, Wrap } from './ui'
 import { WaveIcon } from '../imports/WaveIcon'
 import ProgramBuilderMockup from './mockups/ProgramBuilderMockup'
 
@@ -6,6 +6,12 @@ const FLOW = [
   { t: 'Coach scrive', d: 'Il programma nel builder a griglia' },
   { t: 'Atleta esegue', d: 'E registra dal portale sul telefono' },
   { t: 'Dati tornano', d: 'Readiness, fatica e dolore al coach' },
+]
+
+const STEP_GRADIENTS = [
+  'linear-gradient(135deg, var(--color-grad1), var(--color-grad2))',
+  'linear-gradient(135deg, var(--color-grad2), var(--color-grad3))',
+  'linear-gradient(135deg, var(--color-grad3), var(--color-grad1))',
 ]
 
 export default function Hero() {
@@ -22,10 +28,7 @@ export default function Hero() {
       <Wrap className="relative">
         <div className="mx-auto max-w-[820px] text-center">
           <WaveIcon height={65} className="mx-auto mb-7" />
-          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3.5 py-1.5 font-display text-[0.7rem] font-bold uppercase tracking-wide text-ink-soft">
-            <span className="h-1.5 w-1.5 rounded-full bg-pop" />
-            Coaching OS · non un'app fitness · per coach e atleti
-          </span>
+          <Badge>Coaching OS · non un'app fitness · per coach e atleti</Badge>
           <h1 className="font-display mt-6 text-4xl font-black uppercase leading-[1.02] text-ink sm:text-6xl">
             Il carico si conosce{' '}
             <span className="bg-gradient-to-r from-grad1 via-grad2 to-grad3 bg-clip-text text-transparent">
@@ -47,11 +50,7 @@ export default function Hero() {
               <div className="flex flex-col items-center">
                 <span
                   className="grid h-9 w-9 place-items-center rounded-lg font-display text-sm font-black text-pop-ink"
-                  style={{
-                    background: `linear-gradient(135deg, ${
-                      ['#f2622a', '#c1449c', '#8b3bff'][i]
-                    }, ${['#c1449c', '#8b3bff', '#f2622a'][i]})`,
-                  }}
+                  style={{ background: STEP_GRADIENTS[i] }}
                 >
                   {i + 1}
                 </span>

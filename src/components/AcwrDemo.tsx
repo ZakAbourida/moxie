@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { AcwrChart } from './CaseCharts'
+import { AcwrChart, STATUS_COLOR, getAcwrStatus, type Status } from './CaseCharts'
 import { Wrap, Eyebrow } from './ui'
 
 const INIT = [62, 70, 58, 75]
@@ -10,11 +10,17 @@ function acwr(weeks: number[]): number {
   return chronic === 0 ? 0 : acute / chronic
 }
 
+const VERDICT_LABEL: Record<Status, string> = {
+  neutral: 'muovi gli slider',
+  alarm: 'Spike pericoloso',
+  warn: 'Rischio in salita',
+  ok: 'Zona ottimale',
+}
+
 function verdict(ratio: number): { label: string; color: string; bg: string } {
-  if (ratio === 0) return { label: "muovi gli slider", color: '#6f6862', bg: 'rgba(111,104,98,0.12)' }
-  if (ratio > 1.5 || ratio < 0.6) return { label: 'Spike pericoloso', color: '#e5533f', bg: 'rgba(229,83,63,0.12)' }
-  if (ratio > 1.3 || ratio < 0.8) return { label: 'Rischio in salita', color: '#e8b93a', bg: 'rgba(232,185,58,0.12)' }
-  return { label: 'Zona ottimale', color: '#46c98a', bg: 'rgba(70,201,138,0.12)' }
+  const status: Status = ratio === 0 ? 'neutral' : getAcwrStatus(ratio)
+  const color = STATUS_COLOR[status]
+  return { label: VERDICT_LABEL[status], color, bg: `${color}1f` }
 }
 
 const WEEK_LABELS = ['Sett. –4', 'Sett. –3', 'Sett. –2', 'Sett. pianif.']

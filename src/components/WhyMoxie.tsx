@@ -1,4 +1,4 @@
-import { Eyebrow, Wrap } from './ui'
+import { Eyebrow, SectionHeading, Wrap } from './ui'
 
 type Val = boolean | 'partial'
 const ROWS: { criterion: string; excel: Val; generic: Val; moxie: Val }[] = [
@@ -14,11 +14,9 @@ function Mark({ v, highlight = false }: { v: Val; highlight?: boolean }) {
   if (v === true)
     return (
       <span
-        className="inline-grid h-6 w-6 place-items-center rounded-full text-[0.8rem] font-black"
-        style={{
-          background: highlight ? '#ff8b5a' : 'rgba(70,201,138,0.16)',
-          color: highlight ? '#151313' : '#46c98a',
-        }}
+        className={`inline-grid h-6 w-6 place-items-center rounded-full text-[0.8rem] font-black ${
+          highlight ? 'bg-pop text-pop-ink' : 'bg-ok/15 text-ok'
+        }`}
       >
         ✓
       </span>
@@ -33,9 +31,7 @@ export default function WhyMoxie() {
     <section id="perche" className="border-y border-line-soft bg-paper-deep py-20">
       <Wrap>
         <Eyebrow>Perché Moxie</Eyebrow>
-        <h2 className="font-display max-w-[620px] text-3xl font-black uppercase leading-tight text-ink sm:text-4xl">
-          Un confronto onesto con quello che sostituisce
-        </h2>
+        <SectionHeading>Un confronto onesto con quello che sostituisce</SectionHeading>
 
         <div className="mt-10 overflow-x-auto">
           <table className="w-full min-w-[640px] border-collapse text-left">

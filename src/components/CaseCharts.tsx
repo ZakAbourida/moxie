@@ -1,10 +1,17 @@
-type Status = 'ok' | 'warn' | 'alarm' | 'neutral'
+export type Status = 'ok' | 'warn' | 'alarm' | 'neutral'
 
-const STATUS_COLOR: Record<Status, string> = {
+export const STATUS_COLOR: Record<Status, string> = {
   ok: '#46c98a',
   warn: '#e8b93a',
   alarm: '#e5533f',
   neutral: '#6f6862',
+}
+
+// ACWR risk thresholds: sweet spot 0.8–1.3, caution 0.6–0.8 & 1.3–1.5, alarm outside
+export function getAcwrStatus(ratio: number): Exclude<Status, 'neutral'> {
+  if (ratio > 1.5 || ratio < 0.6) return 'alarm'
+  if (ratio > 1.3 || ratio < 0.8) return 'warn'
+  return 'ok'
 }
 
 const W = 360
@@ -148,13 +155,7 @@ export function AcwrChart({
             cx={xScale(i, n)}
             cy={yScale(v)}
             r={i === gapStart ? 3.5 : 2.5}
-            fill={
-              v > 1.5 || v < 0.6
-                ? STATUS_COLOR.alarm
-                : v > 1.3 || v < 0.8
-                  ? STATUS_COLOR.warn
-                  : STATUS_COLOR.ok
-            }
+            fill={STATUS_COLOR[getAcwrStatus(v)]}
           />
         ),
       )}

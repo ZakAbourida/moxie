@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Wordmark } from './Logo'
+import { Badge } from './ui'
 
 const LINKS = [
   { label: 'Prodotto', href: '#prodotto' },
@@ -43,10 +44,7 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="hidden items-center gap-1.5 rounded-full border border-line bg-panel px-3 py-1.5 font-display text-[0.7rem] font-bold uppercase tracking-wide text-ink-soft sm:flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-pop" />
-            Coach · Atleta
-          </span>
+          <Badge className="hidden sm:inline-flex">Coach · Atleta</Badge>
         </div>
       </div>
     </nav>

@@ -1,8 +1,7 @@
 import { useState, type ReactNode } from 'react'
-import { Eyebrow, Wrap } from './ui'
-import { AcwrChart, LoadSignalChart, EmptyChart } from './CaseCharts'
+import { Eyebrow, Wrap, SectionHeading, Card, GradientDot } from './ui'
+import { AcwrChart, LoadSignalChart, EmptyChart, STATUS_COLOR, type Status } from './CaseCharts'
 
-type Status = 'ok' | 'warn' | 'alarm' | 'neutral'
 type Caption = { label: string; value: string; status: Status }
 
 type Case = {
@@ -14,13 +13,6 @@ type Case = {
   moxie: string
   chart: ReactNode
   caption: Caption
-}
-
-const STATUS_COLOR: Record<Status, string> = {
-  ok: '#46c98a',
-  warn: '#e8b93a',
-  alarm: '#e5533f',
-  neutral: '#6f6862',
 }
 
 const CASES: Case[] = [
@@ -195,9 +187,9 @@ export default function CaseStudies() {
     <section id="casi" className="border-y border-line-soft bg-paper-deep py-20">
       <Wrap>
         <Eyebrow>Prova sul campo · 9 casistiche estreme</Eyebrow>
-        <h2 className="font-display max-w-[720px] text-3xl font-black uppercase leading-tight text-ink sm:text-4xl">
+        <SectionHeading className="max-w-[720px]">
           Non atleti "tipo" per la demo
-        </h2>
+        </SectionHeading>
         <p className="mt-4 max-w-[680px] text-ink-soft">
           Abbiamo costruito 9 casistiche estreme apposta per stressare ogni funzione: chi
           fila liscio, chi rischia l'infortunio, chi sparisce, chi mente a se stesso sul
@@ -224,7 +216,7 @@ export default function CaseStudies() {
         </div>
 
         {/* panel */}
-        <div className="mt-6 grid gap-6 rounded-2xl border border-line-soft bg-panel p-6 sm:p-8 lg:grid-cols-[1.15fr_1fr]">
+        <Card className="mt-6 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <span
               className="inline-flex items-center gap-2 rounded-full px-3 py-1 font-display text-[0.7rem] font-bold uppercase tracking-wide"
@@ -239,7 +231,7 @@ export default function CaseStudies() {
 
             <div className="mt-5 rounded-xl border border-line-soft bg-paper-deep p-4">
               <div className="mb-1.5 flex items-center font-display text-[0.68rem] font-bold uppercase tracking-wide text-pop">
-                <span className="mr-2 h-2.5 w-2.5 rounded bg-gradient-to-br from-grad1 to-grad3" />
+                <GradientDot className="mr-2 h-2.5 w-2.5" />
                 Cosa mostra Moxie
               </div>
               <p className="text-[0.92rem] text-ink-soft">{c.moxie}</p>
@@ -265,7 +257,7 @@ export default function CaseStudies() {
               </span>
             </div>
           </div>
-        </div>
+        </Card>
       </Wrap>
     </section>
   )

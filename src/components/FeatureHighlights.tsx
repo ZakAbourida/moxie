@@ -1,4 +1,4 @@
-import { Eyebrow, Wrap } from './ui'
+import { Eyebrow, SectionHeading, Wrap } from './ui'
 
 const SYNTAX = [
   { code: '4x8 @75% r120', note: '4 serie · 8 rip · 75% · rec 2′' },
@@ -14,31 +14,31 @@ const FEATURES = [
     n: '02',
     title: 'Command Center "Triforza"',
     body: 'Tre angolazioni sullo stesso atleta — volume, readiness, salute — prima di aprire il dettaglio.',
-    accent: '#c1449c',
+    accent: 'var(--color-violet)',
   },
   {
     n: '03',
     title: 'Tap Test neuromotorio',
     body: 'Non ti chiede come ti senti: misura una risposta del sistema nervoso, 10 secondi di tap.',
-    accent: '#8b3bff',
+    accent: 'var(--color-violet-full)',
   },
   {
     n: '04',
     title: 'ACWR a bande di rischio',
     body: 'Sweet spot, attenzione, allarme. E se mancano dati lascia un buco: non inventa un numero.',
-    accent: '#ff8b5a',
+    accent: 'var(--color-pop)',
   },
   {
     n: '05',
     title: 'Command Palette (Cmd+K)',
     body: 'Scorciatoie da tastiera per un uso quotidiano senza mouse. Alt+numero per navigare.',
-    accent: '#c1449c',
+    accent: 'var(--color-violet)',
   },
   {
     n: '06',
     title: 'Push & PWA installabile',
     body: 'Una notifica quando il coach carica o modifica una seduta. In home screen, senza store.',
-    accent: '#8b3bff',
+    accent: 'var(--color-violet-full)',
   },
 ]
 
@@ -47,30 +47,25 @@ export default function FeatureHighlights() {
     <section id="feature" className="py-20">
       <Wrap>
         <Eyebrow>Funzioni distintive</Eyebrow>
-        <h2 className="font-display max-w-[620px] text-3xl font-black uppercase leading-tight text-ink sm:text-4xl">
-          Non feature da brochure. Cose che un coach usa ogni giorno.
-        </h2>
+        <SectionHeading>Non feature da brochure. Cose che un coach usa ogni giorno.</SectionHeading>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
           {/* Marquee: load syntax spans two columns */}
           <article className="group relative overflow-hidden rounded-2xl border border-line-soft bg-panel p-6 lg:col-span-2 lg:row-span-1">
             <div
               className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-[0.14] blur-2xl transition-opacity group-hover:opacity-25"
-              style={{ background: 'linear-gradient(135deg,#f2622a,#8b3bff)' }}
+              style={{ background: 'linear-gradient(135deg, var(--color-grad1), var(--color-grad3))' }}
             />
-            <div className="relative flex items-start justify-between gap-4">
-              <div>
-                <span className="font-display text-[0.7rem] font-bold uppercase tracking-[0.16em] text-ink-dim">
-                  01 — La feature che nessun altro parla la tua lingua
-                </span>
-                <h3 className="font-display mt-1.5 text-xl font-black text-ink">
-                  Sintassi di carico reale
-                </h3>
-                <p className="mt-1.5 max-w-[300px] text-[0.9rem] text-ink-soft">
-                  Come scrive davvero un coach — non menu a tendina, ma prescrizione in una
-                  riga.
-                </p>
-              </div>
+            <div className="relative">
+              <span className="font-display text-[0.7rem] font-bold uppercase tracking-[0.16em] text-ink-dim">
+                01 — La feature che nessun altro parla la tua lingua
+              </span>
+              <h3 className="font-display mt-1.5 text-xl font-black text-ink">
+                Sintassi di carico reale
+              </h3>
+              <p className="mt-1.5 max-w-[300px] text-[0.9rem] text-ink-soft">
+                Come scrive davvero un coach — non menu a tendina, ma prescrizione in una riga.
+              </p>
             </div>
 
             <div className="relative mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">

@@ -1,4 +1,4 @@
-import { Eyebrow, Wrap } from './ui'
+import { Card, Eyebrow, SectionHeading, Wrap } from './ui'
 
 const COACH = [
   'Costruire programmi nel builder a griglia con sintassi di carico reale',
@@ -32,7 +32,7 @@ function Column({
   accent: string
 }) {
   return (
-    <div className="rounded-2xl border border-line-soft bg-panel p-6 sm:p-8">
+    <Card>
       <div className="mb-5 flex items-center gap-3">
         <span
           className="grid h-10 w-10 place-items-center rounded-xl font-display text-sm font-black text-pop-ink"
@@ -56,7 +56,7 @@ function Column({
           </li>
         ))}
       </ul>
-    </div>
+    </Card>
   )
 }
 
@@ -65,21 +65,19 @@ export default function Roles() {
     <section id="ruoli" className="py-20">
       <Wrap>
         <Eyebrow>Attività per ruolo</Eyebrow>
-        <h2 className="font-display max-w-[620px] text-3xl font-black uppercase leading-tight text-ink sm:text-4xl">
-          Due pubblici, già addetti ai lavori
-        </h2>
+        <SectionHeading>Due pubblici, già addetti ai lavori</SectionHeading>
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           <Column
             title="Coach"
             tag="Desktop-first"
             items={COACH}
-            accent="linear-gradient(135deg,#f2622a,#c1449c)"
+            accent="linear-gradient(135deg, var(--color-grad1), var(--color-grad2))"
           />
           <Column
             title="Atleta"
             tag="Portale mobile · PWA"
             items={ATHLETE}
-            accent="linear-gradient(135deg,#c1449c,#8b3bff)"
+            accent="linear-gradient(135deg, var(--color-grad2), var(--color-grad3))"
           />
         </div>
       </Wrap>
