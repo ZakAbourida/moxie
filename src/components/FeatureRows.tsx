@@ -23,8 +23,8 @@ export default function FeatureRows() {
           {t.featureRows.map((row, i) => {
             const flip = i % 2 === 1
             return (
-              <div key={row.title} className="grid items-center gap-10 lg:grid-cols-2">
-                <div className={flip ? 'lg:order-2' : ''}>
+              <div key={row.title} className="grid min-w-0 items-center gap-10 lg:grid-cols-2">
+                <div className={`min-w-0 ${flip ? 'lg:order-2' : ''}`}>
                   <div className="mb-3 flex items-center font-display text-[0.72rem] font-bold uppercase tracking-[0.14em] text-pop">
                     <span className="mr-2.5 h-3 w-3 rounded bg-gradient-to-br from-grad1 to-grad3" />
                     {row.eyebrow}
@@ -39,7 +39,7 @@ export default function FeatureRows() {
                     </p>
                   )}
                 </div>
-                <div className={flip ? 'lg:order-1' : ''}>{MOCKUPS[i]}</div>
+                <div className={`min-w-0 ${flip ? 'lg:order-1' : ''}`}>{MOCKUPS[i]}</div>
               </div>
             )
           })}
