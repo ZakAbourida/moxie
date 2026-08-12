@@ -1,25 +1,28 @@
 import { Wrap } from './ui'
+import { useLanguage } from '../i18n/context'
 
 export default function Manifesto() {
+  const { t } = useLanguage()
+  const m = t.manifesto
+
   return (
     <section className="border-y border-line-soft bg-paper-deep py-24">
       <Wrap narrow>
         <p className="font-display text-2xl font-bold leading-snug text-ink sm:text-[2rem]">
-          Nato da un coach per sostituire i propri{' '}
-          <span className="text-ink-dim">fogli Excel</span> e i{' '}
-          <span className="text-ink-dim">gruppi WhatsApp</span> — dove i dati si
-          perdevano tra uno screenshot e l'altro.
+          {m.p1a}{' '}
+          <span className="text-ink-dim">{m.p1excel}</span>{' '}
+          {m.p1mid}{' '}
+          <span className="text-ink-dim">{m.p1whatsapp}</span>{' '}
+          {m.p1b}
         </p>
         <p className="mt-6 font-display text-2xl font-bold leading-snug text-ink sm:text-[2rem]">
-          Moxie{' '}
+          {m.p2a}{' '}
           <span className="bg-gradient-to-r from-grad1 via-grad2 to-grad3 bg-clip-text text-transparent">
-            chiude il cerchio
+            {m.p2b}
           </span>
-          : il programma, l'esecuzione e la risposta dell'atleta nello stesso posto.
+          {m.p2c}
         </p>
-        <p className="mt-8 text-ink-soft">
-          Oggi in produzione, usato ogni giorno su atleti reali.
-        </p>
+        <p className="mt-8 text-ink-soft">{m.p3}</p>
       </Wrap>
     </section>
   )

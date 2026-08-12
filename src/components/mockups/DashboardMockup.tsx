@@ -1,4 +1,4 @@
-import { BrowserFrame, MockupCard } from './Frame'
+import { BrowserFrame } from './Frame'
 
 const ROSTER = [
   { name: 'Marco LaMacchina', rpe: 72, done: 100, ready: 88, status: 'ATTIVO' },
@@ -8,9 +8,9 @@ const ROSTER = [
 ]
 
 function readyColor(v: number) {
-  if (v >= 70) return 'var(--color-ok)'
-  if (v >= 45) return 'var(--color-warn)'
-  return 'var(--color-alarm)'
+  if (v >= 70) return '#46c98a'
+  if (v >= 45) return '#e8b93a'
+  return '#e5533f'
 }
 
 export default function DashboardMockup() {
@@ -22,10 +22,10 @@ export default function DashboardMockup() {
           { k: 'Feedback da leggere', v: '3', c: 'text-pop' },
           { k: 'Prossima gara', v: '9 gg', c: 'text-violet-soft' },
         ].map((s) => (
-          <MockupCard key={s.k}>
+          <div key={s.k} className="rounded-xl border border-line-soft bg-panel px-3 py-3">
             <div className={`font-display text-2xl font-black ${s.c}`}>{s.v}</div>
             <div className="text-[0.62rem] uppercase tracking-wide text-ink-dim">{s.k}</div>
-          </MockupCard>
+          </div>
         ))}
       </div>
 
@@ -47,12 +47,12 @@ export default function DashboardMockup() {
 
       <div className="space-y-2.5 px-4 pb-5">
         {ROSTER.map((a) => (
-          <MockupCard key={a.name} className="px-3 py-2.5">
+          <div key={a.name} className="rounded-xl border border-line-soft bg-panel px-3 py-2.5">
             <div className="mb-1.5 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span
                   className="grid h-7 w-7 place-items-center rounded-full text-[0.6rem] font-bold text-ink"
-                  style={{ background: 'linear-gradient(135deg, var(--color-grad2), var(--color-grad3))' }}
+                  style={{ background: 'linear-gradient(135deg,#c1449c,#8b3bff)' }}
                 >
                   {a.name.split(' ').map((w) => w[0]).join('')}
                 </span>
@@ -85,7 +85,7 @@ export default function DashboardMockup() {
                 </span>
               </div>
             </div>
-          </MockupCard>
+          </div>
         ))}
       </div>
     </BrowserFrame>

@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Wordmark } from './Logo'
-import { Badge } from './ui'
-
-const LINKS = [
-  { label: 'Prodotto', href: '#prodotto' },
-  { label: 'Feature', href: '#feature' },
-  { label: 'Casi reali', href: '#casi' },
-  { label: 'Ruoli', href: '#ruoli' },
-  { label: 'Perché Moxie', href: '#perche' },
-]
+import { useLanguage } from '../i18n/context'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const { t, lang, setLang } = useLanguage()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -32,7 +25,7 @@ export default function Nav() {
         </a>
 
         <div className="hidden items-center gap-8 lg:flex">
-          {LINKS.map((l) => (
+          {t.nav.links.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -44,7 +37,18 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Badge className="hidden sm:inline-flex">Coach · Atleta</Badge>
+          <span className="hidden items-center gap-1.5 rounded-full border border-line bg-panel px-3 py-1.5 font-display text-[0.7rem] font-bold uppercase tracking-wide text-ink-soft sm:flex">
+            <span className="h-1.5 w-1.5 rounded-full bg-pop" />
+            {t.nav.badge}
+          </span>
+
+          <button
+            onClick={() => setLang(lang === 'it' ? 'en' : 'it')}
+            className="rounded-full border border-line bg-panel px-3 py-1.5 font-display text-[0.7rem] font-bold uppercase tracking-wide text-ink-soft transition-colors hover:border-pop hover:text-ink"
+            aria-label="Switch language"
+          >
+            {t.nav.langLabel}
+          </button>
         </div>
       </div>
     </nav>

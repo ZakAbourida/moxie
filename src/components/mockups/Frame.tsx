@@ -28,18 +28,6 @@ export function BrowserFrame({
   )
 }
 
-export function MockupCard({
-  children,
-  className = 'px-3 py-3',
-}: {
-  children: ReactNode
-  className?: string
-}) {
-  return (
-    <div className={`rounded-xl border border-line-soft bg-panel ${className}`}>{children}</div>
-  )
-}
-
 export function PhoneFrame({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto w-full max-w-[310px] rounded-[2.4rem] border border-line bg-paper-raise p-2.5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]">

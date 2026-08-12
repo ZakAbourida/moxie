@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import { MockupCard, PhoneFrame } from './Frame'
+import { useState } from 'react'
+import { PhoneFrame } from './Frame'
 
 const DIMS = [
   { key: 'SONNO', q: 'Come hai dormito?', lo: 'Pessimo', hi: 'Ottimo' },
@@ -14,12 +14,9 @@ export default function WellnessMockup() {
   const [pick, setPick] = useState<number | null>(4)
   const dim = DIMS[step - 1]
 
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined)
-  useEffect(() => () => clearTimeout(timeoutRef.current), [])
-
   const choose = (n: number) => {
     setPick(n)
-    timeoutRef.current = setTimeout(() => {
+    setTimeout(() => {
       setStep((s) => (s >= DIMS.length ? 1 : s + 1))
       setPick(null)
     }, 320)
@@ -78,7 +75,7 @@ export default function WellnessMockup() {
           <span>{dim.hi}</span>
         </div>
 
-        <MockupCard className="mt-6 px-3 py-3">
+        <div className="mt-6 rounded-xl border border-line-soft bg-panel px-3 py-3">
           <div className="mb-1 font-display text-[0.62rem] font-bold uppercase tracking-wide text-violet-soft">
             Test Neuromotorio
           </div>
@@ -90,7 +87,7 @@ export default function WellnessMockup() {
             <div className="h-full w-[86%] rounded-full bg-gradient-to-r from-grad1 via-grad2 to-grad3" />
           </div>
           <div className="mt-1 text-[0.58rem] text-ink-dim">86% della baseline 14gg</div>
-        </MockupCard>
+        </div>
       </div>
     </PhoneFrame>
   )

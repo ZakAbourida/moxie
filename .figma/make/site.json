@@ -1,15 +1,7 @@
 {
-  "title": "Moxie — Coaching OS per coach e atleti",
-  "description": "Moxie è il coaching OS che collega il coach e l'atleta: il coach costruisce e adatta i programmi, l'atleta li esegue dal telefono, i dati di readiness e carico tornano indietro in tempo reale.",
-  "language": "it",
+  "description": "Create engaging landing pages for products, helping businesses effectively showcase their offerings and boost conversions with a user-friendly interface.",
   "robots": {
-    "index": true
-  },
-  "icons": {
-    "icon": "favicon.svg"
-  },
-  "openGraph": {
-    "image": "https://zakabourida.github.io/moxie/og-image.png"
+    "index": false
   },
   "accessibility": {
     "addBypassLinks": false,

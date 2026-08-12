@@ -1,16 +1,20 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
+import Problem from './components/Problem'
+import CoreLoop from './components/CoreLoop'
 import FeatureHighlights from './components/FeatureHighlights'
-import Manifesto from './components/Manifesto'
 import FeatureRows from './components/FeatureRows'
+import DecisionMaking from './components/DecisionMaking'
+import AcwrDemo from './components/AcwrDemo'
 import CaseStudies from './components/CaseStudies'
 import Roles from './components/Roles'
+import Manifesto from './components/Manifesto'
 import WhyMoxie from './components/WhyMoxie'
+import ScienceTrust from './components/ScienceTrust'
+import GettingStarted from './components/GettingStarted'
 import FinalCta from './components/FinalCta'
 import Footer from './components/Footer'
 import Background from './components/Background'
-import StatsBand from './components/StatsBand'
-import AcwrDemo from './components/AcwrDemo'
 
 export default function App() {
   return (
@@ -19,14 +23,18 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <Problem />
+        <CoreLoop />
         <FeatureHighlights />
-        <StatsBand />
-        <Manifesto />
         <FeatureRows />
+        <DecisionMaking />
         <AcwrDemo />
         <CaseStudies />
         <Roles />
+        <Manifesto />
         <WhyMoxie />
+        <ScienceTrust />
+        <GettingStarted />
         <FinalCta />
       </main>
       <Footer />

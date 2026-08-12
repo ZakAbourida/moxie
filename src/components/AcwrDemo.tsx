@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
-import { AcwrChart, STATUS_COLOR, getAcwrStatus, type Status } from './CaseCharts'
-import { Wrap, Eyebrow } from './ui'
+import { AcwrChart } from './CaseCharts'
+import { Eyebrow } from './ui'
+import { useLanguage } from '../i18n/context'
 
 const INIT = [62, 70, 58, 75]
 
@@ -10,26 +11,19 @@ function acwr(weeks: number[]): number {
   return chronic === 0 ? 0 : acute / chronic
 }
 
-const VERDICT_LABEL: Record<Status, string> = {
-  neutral: 'muovi gli slider',
-  alarm: 'Spike pericoloso',
-  warn: 'Rischio in salita',
-  ok: 'Zona ottimale',
-}
-
-function verdict(ratio: number): { label: string; color: string; bg: string } {
-  const status: Status = ratio === 0 ? 'neutral' : getAcwrStatus(ratio)
-  const color = STATUS_COLOR[status]
-  return { label: VERDICT_LABEL[status], color, bg: `${color}1f` }
-}
-
-const WEEK_LABELS = ['Sett. –4', 'Sett. –3', 'Sett. –2', 'Sett. pianif.']
-
 export default function AcwrDemo() {
   const [weeks, setWeeks] = useState(INIT)
+  const { t } = useLanguage()
+  const ad = t.acwrDemo
 
   const ratio = useMemo(() => acwr(weeks), [weeks])
-  const v = verdict(ratio)
+
+  const v = useMemo(() => {
+    if (ratio === 0) return { ...ad.verdicts.zero, color: '#6f6862', bg: 'rgba(111,104,98,0.12)' }
+    if (ratio > 1.5 || ratio < 0.6) return { ...ad.verdicts.danger, color: '#e5533f', bg: 'rgba(229,83,63,0.10)' }
+    if (ratio > 1.3 || ratio < 0.8) return { ...ad.verdicts.warn, color: '#e8b93a', bg: 'rgba(232,185,58,0.10)' }
+    return { ...ad.verdicts.ok, color: '#46c98a', bg: 'rgba(70,201,138,0.10)' }
+  }, [ratio, ad])
 
   const chartValues = useMemo(() => {
     const series: (number | null)[] = []
@@ -44,81 +38,74 @@ export default function AcwrDemo() {
   }, [weeks])
 
   return (
-    <section className="border-y border-line-soft bg-paper-deep py-20">
-      <Wrap>
-        <Eyebrow>Demo interattiva · ACWR</Eyebrow>
-        <h2 className="font-display mb-3 text-3xl font-bold text-ink sm:text-4xl">
-          Vedi il rischio muoversi in tempo reale
-        </h2>
-        <p className="mb-12 max-w-xl text-ink-soft">
-          {"L'ACWR (Acute:Chronic Workload Ratio) misura quanto il carico della settimana corrente si discosta dalla media storica. Muovi gli slider e osserva il verdetto cambiare."}
-        </p>
-
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16 items-start">
-          {/* controls */}
-          <div className="space-y-7">
-            {weeks.map((val, i) => (
-              <div key={i}>
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="font-display text-[0.72rem] font-bold uppercase tracking-[0.12em] text-ink-dim">
-                    {WEEK_LABELS[i]}
-                  </span>
-                  <span
-                    className="font-display text-sm font-bold"
-                    style={{ color: i === 3 ? 'var(--color-pop)' : 'var(--color-ink-soft)' }}
-                  >
-                    {val}
-                    <span className="text-ink-dim"> UA</span>
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min={0}
-                  max={100}
-                  value={val}
-                  onChange={(e) => {
-                    const next = [...weeks]
-                    next[i] = Number(e.target.value)
-                    setWeeks(next)
-                  }}
-                  className="w-full accent-pop h-1.5 rounded-full"
-                  aria-label={WEEK_LABELS[i]}
-                />
-              </div>
-            ))}
+    <section className="py-20">
+      <div className="relative border-y border-line-soft" style={{ background: 'rgba(139,59,255,0.04)' }}>
+        <div className="mx-auto max-w-[1120px] px-5 sm:px-8 py-16">
+          <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <Eyebrow>{ad.eyebrow}</Eyebrow>
+              <h2 className="font-display text-3xl font-bold text-ink sm:text-4xl">{ad.h2}</h2>
+            </div>
+            <p className="max-w-sm text-[0.85rem] text-ink-dim">{ad.subtitle}</p>
           </div>
 
-          {/* chart + verdict */}
-          <div className="space-y-5">
-            <AcwrChart values={chartValues} title="ACWR simulato" />
-
-            <div
-              className="flex items-center justify-between rounded-lg px-5 py-4"
-              style={{ background: v.bg, border: `1px solid ${v.color}22` }}
-            >
-              <div>
-                <div
-                  className="font-display text-[0.68rem] font-bold uppercase tracking-[0.12em]"
-                  style={{ color: v.color }}
-                >
-                  Verdetto
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16 items-start">
+            <div className="space-y-6">
+              {weeks.map((val, i) => (
+                <div key={i}>
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="font-display text-[0.7rem] font-bold uppercase tracking-[0.12em] text-ink-dim">
+                      {ad.weekLabels[i]}
+                    </span>
+                    <span
+                      className="font-display text-sm font-bold tabular-nums"
+                      style={{ color: i === 3 ? 'var(--color-pop)' : 'var(--color-ink-soft)' }}
+                    >
+                      {val} <span className="text-ink-dim font-normal">{ad.unit}</span>
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={val}
+                    onChange={(e) => {
+                      const next = [...weeks]
+                      next[i] = Number(e.target.value)
+                      setWeeks(next)
+                    }}
+                    className="w-full accent-pop h-1.5 rounded-full"
+                    aria-label={ad.weekLabels[i]}
+                  />
                 </div>
-                <div className="font-display mt-0.5 text-xl font-bold text-ink">{v.label}</div>
-              </div>
+              ))}
+
               <div
-                className="font-display text-4xl font-extrabold tabular-nums"
-                style={{ color: v.color }}
+                className="mt-4 rounded-2xl px-6 py-5"
+                style={{ background: v.bg, border: `1px solid ${v.color}28` }}
               >
-                {ratio.toFixed(2)}
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <div className="font-display text-[0.65rem] font-bold uppercase tracking-[0.12em]" style={{ color: v.color }}>
+                      {ad.verdictLabel}
+                    </div>
+                    <div className="font-display mt-0.5 text-xl font-black text-ink">{v.label}</div>
+                    {v.sub && <div className="mt-1 text-[0.76rem] text-ink-dim">{v.sub}</div>}
+                  </div>
+                  <div className="font-display text-5xl font-black tabular-nums leading-none" style={{ color: v.color }}>
+                    {ratio.toFixed(2)}
+                  </div>
+                </div>
               </div>
             </div>
 
-            <p className="text-[0.78rem] text-ink-dim">
-              Sweet spot ACWR: 0.8 – 1.3. Sopra 1.5 o sotto 0.6 il rischio infortuni aumenta significativamente.
-            </p>
+            <div>
+              <AcwrChart values={chartValues} title={ad.chartTitle} />
+              <p className="mt-4 text-[0.75rem] text-ink-dim">{ad.footerNote}</p>
+            </div>
           </div>
         </div>
-      </Wrap>
+      </div>
     </section>
   )
 }
