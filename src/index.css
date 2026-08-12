@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-paper: #131110;
+  --color-paper-deep: #151313;
+  --color-paper-raise: #1e1b1b;
+  --color-panel: #1a1717;
+  --color-panel-2: #211d1d;
+  --color-ink: #f5f1ea;
+  --color-ink-soft: #c7c0b6;
+  --color-ink-dim: #837c74;
+  --color-ink-faint: #8a8378;
+  --color-line: #322d2c;
+  --color-line-soft: #262121;
+
+  --color-pop: #ff8b5a;
+  --color-pop-strong: #f2622a;
+  --color-pop-ink: #151313;
+  --color-violet: #c1449c;
+  --color-violet-full: #8b3bff;
+
+  --color-grad1: #f2622a;
+  --color-grad2: #c1449c;
+  --color-grad3: #8b3bff;
+
+  --color-ok: #46c98a;
+  --color-warn: #e8b93a;
+  --color-alarm: #e5533f;
+  --color-neutral: #6f6862;
+
+  --font-display: 'Lexend', 'Helvetica Neue', Impact, sans-serif;
+  --font-sans: 'Manrope', 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-pop);
+  color: var(--color-pop-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* Hide scrollbars until scrolling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 8px;
+}
+*:hover::-webkit-scrollbar-thumb {
+  background: #322d2c;
+}
+
+@keyframes aurora-drift-a {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(8vw, 12vh) scale(1.15); }
+}
+@keyframes aurora-drift-b {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-6vw, 8vh) scale(0.9); }
+}
+@keyframes aurora-drift-c {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(10vw, -10vh) scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
