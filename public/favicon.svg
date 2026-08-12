@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="12" fill="#151313" />
+  <rect x="0.6" y="0.6" width="46.8" height="46.8" rx="11.4" stroke="#ffffff" stroke-opacity="0.08" />
+  <defs>
+    <linearGradient id="moxie-favicon-wave" x1="6" y1="24" x2="42" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2622A" />
+      <stop offset="0.5" stop-color="#C1449C" />
+      <stop offset="1" stop-color="#8B3BFF" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M6 25.5 L14 25.5 L18 15 L23 33 L28 20.5 L31.5 25.5 L38 25.5"
+    stroke="url(#moxie-favicon-wave)"
+    stroke-width="3.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="39.5" cy="25.5" r="3.4" fill="#F2622A" />
+</svg>

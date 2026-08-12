@@ -5,6 +5,12 @@
   "robots": {
     "index": true
   },
+  "icons": {
+    "icon": "favicon.svg"
+  },
+  "openGraph": {
+    "image": "https://zakabourida.github.io/moxie/og-image.png"
+  },
   "accessibility": {
     "addBypassLinks": false,
     "ignoreReducedMotion": false
