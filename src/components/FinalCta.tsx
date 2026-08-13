@@ -23,6 +23,19 @@ export default function FinalCta() {
             <p className="mx-auto mt-4 max-w-[520px] text-[1.05rem] font-medium text-pop-ink/80">
               {cta.body}
             </p>
+            <div className="mt-8 flex flex-col items-center gap-2">
+              <a
+                href="https://app.usemoxie.workers.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display inline-flex items-center gap-2 rounded-full bg-pop-ink px-6 py-3 text-sm font-bold uppercase tracking-wide text-pop transition-opacity hover:opacity-90"
+              >
+                {cta.ctaButton}
+              </a>
+              <span className="font-display text-[0.7rem] font-bold uppercase tracking-wide text-pop-ink/60">
+                {cta.betaNote}
+              </span>
+            </div>
           </div>
         </div>
       </Wrap>

@@ -37,6 +37,16 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-3">
+          <a
+            href="https://app.usemoxie.workers.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-1.5 rounded-full border border-pop/40 bg-pop/10 px-3 py-1.5 font-display text-[0.7rem] font-bold uppercase tracking-wide text-pop transition-colors hover:border-pop hover:bg-pop/20 sm:flex"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-pop" />
+            {t.nav.betaBadge}
+          </a>
+
           <span className="hidden items-center gap-1.5 rounded-full border border-line bg-panel px-3 py-1.5 font-display text-[0.7rem] font-bold uppercase tracking-wide text-ink-soft sm:flex">
             <span className="h-1.5 w-1.5 rounded-full bg-pop" />
             {t.nav.badge}
