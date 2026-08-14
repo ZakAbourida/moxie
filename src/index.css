@@ -9,8 +9,8 @@
   --color-panel-2: #211d1d;
   --color-ink: #f5f1ea;
   --color-ink-soft: #c7c0b6;
-  --color-ink-dim: #837c74;
-  --color-ink-faint: #8a8378;
+  --color-ink-dim: #a69e94;
+  --color-ink-faint: #b8afa5;
   --color-line: #322d2c;
   --color-line-soft: #262121;
 
@@ -51,6 +51,11 @@ body {
 ::selection {
   background: var(--color-pop);
   color: var(--color-pop-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-pop);
+  outline-offset: 3px;
 }
 
 .font-display {
