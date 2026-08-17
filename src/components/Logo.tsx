@@ -1,44 +1,47 @@
+import { useId } from 'react'
+
 type LogoMarkProps = {
   size?: number
   className?: string
 }
 
+// Forma icona del marchio: stessa geometria di public/favicon.svg e della
+// variante iconOnly nell'app (viewBox 512, onda in translate(76,158)).
+// Il tracciato dell'onda è quello canonico — vedi docs/brand/BRAND.md in MoxieApp.
 export function LogoMark({ size = 32, className = '' }: LogoMarkProps) {
-  const id = `moxie-wave-${size}`
+  const waveId = useId()
+  const bgId = useId()
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 48 48"
+      viewBox="0 0 512 512"
       fill="none"
       className={className}
       aria-hidden="true"
     >
-      <rect width="48" height="48" rx="12" fill="#151313" />
-      <rect
-        x="0.6"
-        y="0.6"
-        width="46.8"
-        height="46.8"
-        rx="11.4"
-        stroke="#ffffff"
-        strokeOpacity="0.08"
-      />
       <defs>
-        <linearGradient id={id} x1="6" y1="24" x2="42" y2="24" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#F2622A" />
-          <stop offset="0.5" stopColor="#C1449C" />
-          <stop offset="1" stopColor="#8B3BFF" />
+        <linearGradient id={waveId} x1="0" y1="0" x2="1" y2="0.15">
+          <stop offset="0%" stopColor="#F2622A" />
+          <stop offset="52%" stopColor="#C1449C" />
+          <stop offset="100%" stopColor="#8B3BFF" />
         </linearGradient>
+        <radialGradient id={bgId} cx="30%" cy="20%" r="90%">
+          <stop offset="0%" stopColor="#1C1917" />
+          <stop offset="100%" stopColor="#131110" />
+        </radialGradient>
       </defs>
-      <path
-        d="M6 25.5 L14 25.5 L18 15 L23 33 L28 20.5 L31.5 25.5 L38 25.5"
-        stroke={`url(#${id})`}
-        strokeWidth="3.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="39.5" cy="25.5" r="3.4" fill="#F2622A" />
+      <rect width="512" height="512" rx="112" fill={`url(#${bgId})`} />
+      <g transform="translate(76,158)">
+        <path
+          d="M12,150 C42,150 50,32 82,32 C114,32 118,158 150,158 C182,158 186,74 218,74 C250,74 244,166 276,166 C308,166 302,26 338,26"
+          stroke={`url(#${waveId})`}
+          strokeWidth="24"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <circle cx="338" cy="26" r="19" fill="#F2622A" />
+      </g>
     </svg>
   )
 }
@@ -58,7 +61,7 @@ export function Wordmark({ tagline = false, className = '' }: WordmarkProps) {
         </span>
         {tagline && (
           <span className="mt-0.5 block font-display text-[0.5rem] font-bold uppercase tracking-[0.28em] text-ink-dim">
-            Elite Performance
+            Coaching OS
           </span>
         )}
       </div>

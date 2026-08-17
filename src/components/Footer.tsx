@@ -14,6 +14,15 @@ export default function Footer() {
           <p className="max-w-[380px] text-[0.85rem] text-ink-dim">{f.desc}</p>
         </div>
 
+        {/* Glossa del nome: "moxie" non dice nulla a un lettore italiano, e il suo
+            significato è esattamente ciò che il prodotto sorveglia. */}
+        <p className="mt-8 max-w-[560px] text-[0.85rem] text-ink-dim">
+          <b className="font-display font-bold text-ink-soft">{f.meaningWord}</b>{' '}
+          <span className="text-ink-faint">{f.meaningPron}</span>
+          <span className="mx-1.5">—</span>
+          {f.meaning}
+        </p>
+
         <div className="mt-8 flex flex-col gap-4 border-t border-line-soft pt-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="font-display text-sm font-bold text-ink-soft">Zakaria Abourida</div>

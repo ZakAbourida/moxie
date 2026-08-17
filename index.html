@@ -14,10 +14,14 @@
       property="og:description"
       content="Moxie è un coaching OS che collega programmazione, esecuzione reale, feedback dell'atleta e decisioni del coach in un unico loop."
     />
-    <meta property="og:image" content="/og-image.png" />
+    <!-- og:image e twitter:image devono essere URL assoluti: i crawler social non
+         risolvono i percorsi relativi, e con base /moxie/ l'anteprima non si genera. -->
+    <meta property="og:image" content="https://zakabourida.github.io/moxie/og-image.png" />
+    <meta property="og:url" content="https://zakabourida.github.io/moxie/" />
+    <meta property="og:site_name" content="Moxie" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content="https://zakabourida.github.io/moxie/og-image.png" />
   </head>
   <body>
     <div id="root"></div>

@@ -404,6 +404,9 @@ const it = {
   },
   footer: {
     desc: "Un coaching OS per atleti di performance. Fatto su misura per come lavora davvero un coach di forza e atletica — non un'app fitness da app store.",
+    meaningWord: "moxie",
+    meaningPron: "/ˈmɒksi/",
+    meaning: "fegato, grinta. Quello che serve all'atleta — e che il carico può togliergli.",
     github: "GitHub",
     instagram: "Instagram",
   },
@@ -810,6 +813,9 @@ const en: typeof it = {
   },
   footer: {
     desc: "A coaching OS for performance athletes. Built around how a strength and track & field coach actually works — not a fitness app from the app store.",
+    meaningWord: "moxie",
+    meaningPron: "/ˈmɒksi/",
+    meaning: "nerve, guts. What an athlete needs — and what training load can take away.",
     github: "GitHub",
     instagram: "Instagram",
   },
