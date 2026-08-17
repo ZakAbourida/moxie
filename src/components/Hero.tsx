@@ -56,10 +56,10 @@ export default function Hero() {
           </div>
           <div className="mx-auto mt-5 max-w-[560px] text-[0.75rem] text-ink-dim">
             <span className="font-display font-bold uppercase tracking-wide text-pop">
-              {tx.common.beta}
+              {tx.common.status}
             </span>
             <span className="mx-2 text-line">·</span>
-            {tx.common.betaDetail}
+            {tx.common.statusDetail}
           </div>
         </div>
 

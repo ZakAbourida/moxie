@@ -42,7 +42,7 @@ export default function FinalCta() {
               </a>
             </div>
             <span className="font-display mt-4 block text-[0.7rem] font-bold uppercase tracking-wide text-pop-ink/60">
-              {tx.common.beta}
+              {tx.common.status}
             </span>
           </div>
         </div>

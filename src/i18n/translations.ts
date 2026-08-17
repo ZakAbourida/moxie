@@ -8,7 +8,6 @@ const it = {
       { label: "Perché Moxie", href: "#perche" },
     ],
     badge: "Coach · Atleta",
-    betaBadge: "Private Beta",
     langLabel: "EN",
   },
   hero: {
@@ -399,8 +398,6 @@ const it = {
   finalCta: {
     h2: "Costruito per coach che ragionano sui dati",
     body: "Niente app generiche, niente fogli di calcolo sparsi. Moxie è uno strumento professionale fatto per chi allena ad alto livello — e vuole capire davvero cosa succede ai propri atleti.",
-    betaNote: "Attualmente in private beta",
-    ctaButton: "Accedi alla beta",
   },
   footer: {
     desc: "Un coaching OS per atleti di performance. Fatto su misura per come lavora davvero un coach di forza e atletica — non un'app fitness da app store.",
@@ -422,7 +419,6 @@ const en: typeof it = {
       { label: "Why Moxie", href: "#perche" },
     ],
     badge: "Coach · Athlete",
-    betaBadge: "Private Beta",
     langLabel: "IT",
   },
   hero: {
@@ -808,8 +804,6 @@ const en: typeof it = {
   finalCta: {
     h2: "Built for coaches who reason from data",
     body: "No generic apps, no scattered spreadsheets. Moxie is a professional tool built for high-performance coaches — who want to truly understand what's happening to their athletes.",
-    betaNote: "Currently in private beta",
-    ctaButton: "Access the beta",
   },
   footer: {
     desc: "A coaching OS for performance athletes. Built around how a strength and track & field coach actually works — not a fitness app from the app store.",

@@ -5,12 +5,12 @@ const it = {
     home: "Home",
     product: "Prodotto",
     explore: "Esplora il progetto",
-    reserved: "Area riservata",
+    reserved: "Accedi",
     backHome: "Torna alla panoramica",
     discover: "Approfondisci",
-    beta: "Private beta sul campo",
-    betaDetail:
-      "In test durante la stagione con un gruppo ristretto di coach e circa 20 atleti.",
+    status: "In produzione, sul campo",
+    statusDetail:
+      "In uso reale questa stagione con un gruppo ristretto di coach e circa 20 atleti. Non è aperto a nuove iscrizioni.",
     skip: "Vai al contenuto",
   },
   home: {
@@ -25,7 +25,7 @@ const it = {
     projectStats: [
       { value: "3–4", label: "coach nel gruppo pilota" },
       { value: "≈20", label: "atleti in utilizzo reale" },
-      { value: "1", label: "stagione di private beta" },
+      { value: "1", label: "stagione in uso reale" },
     ],
     engineeringCta: "Scopri come è costruito",
   },
@@ -325,12 +325,12 @@ const en: typeof it = {
     home: "Home",
     product: "Product",
     explore: "Explore the project",
-    reserved: "Restricted area",
+    reserved: "Sign in",
     backHome: "Back to overview",
     discover: "Learn more",
-    beta: "Field private beta",
-    betaDetail:
-      "Being tested this season with a small group of coaches and around 20 athletes.",
+    status: "In production, in the field",
+    statusDetail:
+      "In real use this season with a small group of coaches and around 20 athletes. Not open to new signups.",
     skip: "Skip to content",
   },
   home: {
@@ -345,7 +345,7 @@ const en: typeof it = {
     projectStats: [
       { value: "3–4", label: "coaches in the pilot group" },
       { value: "≈20", label: "athletes in real use" },
-      { value: "1", label: "private beta season" },
+      { value: "1", label: "season in real use" },
     ],
     engineeringCta: "See how it is built",
   },
