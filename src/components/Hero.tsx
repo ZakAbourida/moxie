@@ -1,5 +1,5 @@
 import { Wrap } from "./ui"
-import { WaveIcon } from "../imports/WaveIcon"
+import { Logo } from "./Logo"
 import ProgramBuilderMockup from "./mockups/ProgramBuilderMockup"
 import { useLanguage } from "../i18n/context"
 import { topicTranslations } from "../i18n/topicTranslations"
@@ -23,7 +23,7 @@ export default function Hero() {
       />
       <Wrap className="relative">
         <div className="mx-auto max-w-[820px] text-center">
-          <WaveIcon height={65} className="mx-auto mb-7" />
+          <Logo height={64} className="mx-auto mb-7" />
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3.5 py-1.5 font-display text-[0.7rem] font-bold uppercase tracking-wide text-ink-soft">
             <span className="h-1.5 w-1.5 rounded-full bg-pop" />
             {h.badge}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Wordmark } from "./Logo"
+import { Logo } from "./Logo"
 import { useLanguage } from "../i18n/context"
 import { topicTranslations } from "../i18n/topicTranslations"
 
@@ -37,7 +37,9 @@ export default function Nav() {
           aria-label="Moxie home"
           onClick={() => setMobileOpen(false)}
         >
-          <Wordmark />
+          {/* Solo il simbolo: in topbar il logotipo è il pezzo che dice il nome,
+              e il nome lo dice l'hero. Vedi BRAND.md §3. */}
+          <Logo form="mark" height={28} />
         </a>
 
         <div className="hidden items-center gap-8 lg:flex">

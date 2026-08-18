@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.svg" width="520" alt="MOXIE — Coaching OS for performance athletes">
+  <img src="docs/assets/brand/moxie-logotype-gradient.svg" width="360" alt="Moxie — Coaching OS for performance athletes">
 </p>
 
 <p align="center">
@@ -10,9 +10,9 @@
   <img alt="E2E" src="https://img.shields.io/badge/E2E-Playwright-2d2a26?labelColor=151313&color=3f7a4e">
 </p>
 
-**MOXIE is a coaching platform for performance athletes.** It replaces the per-athlete Excel sheets that coaches actually use today: the coach builds and adapts training programs week by week in a spreadsheet-style builder, athletes log their sessions set-by-set from a mobile portal, and the system keeps both sides in sync — load monitoring, readiness, and structured feedback included.
+**Moxie is a coaching platform for performance athletes.** It replaces the per-athlete Excel sheets that coaches actually use today: the coach builds and adapts training programs week by week in a spreadsheet-style builder, athletes log their sessions set-by-set from a mobile portal, and the system keeps both sides in sync — load monitoring, readiness, and structured feedback included.
 
-Built by a coach-developer for real daily use: MOXIE currently runs in production for a small group of coaches and their athletes. It is not a generic fitness app — every design decision comes from the operating context of real coaching, originally documented from a track & field throws practice in [`docs/Overview`](docs/Overview) and generalized from there.
+Built by a coach-developer for real daily use: Moxie currently runs in production for a small group of coaches and their athletes. It is not a generic fitness app — every design decision comes from the operating context of real coaching, originally documented from a track & field throws practice in [`docs/Overview`](docs/Overview) and generalized from there.
 
 > 🇮🇹 The product UI is in Italian, because its users are Italian coaches. Domain entities in the codebase (`programmi`, `settimane`, `prescrizione`…) follow the same convention, consistently.
 
@@ -120,7 +120,7 @@ Plus: TypeScript `strict`, ESLint with 0 errors, error boundaries per app area, 
 
 ## How it was built
 
-MOXIE was designed, developed and operated by a single developer with direct domain expertise in athletic coaching, over ~3 months of iterative work — **AI-assisted, human-directed**. Claude Code was used as a development accelerator (and appears transparently as co-author in the commit history); every architectural decision, security trade-off and scope call is human-owned and documented where it was made: migrations explain *why* and what risk was accepted, code comments record constraints rather than paraphrasing code, and the PR history shows the full audit → harden → test cycle.
+Moxie was designed, developed and operated by a single developer with direct domain expertise in athletic coaching, over ~3 months of iterative work — **AI-assisted, human-directed**. Claude Code was used as a development accelerator (and appears transparently as co-author in the commit history); every architectural decision, security trade-off and scope call is human-owned and documented where it was made: migrations explain *why* and what risk was accepted, code comments record constraints rather than paraphrasing code, and the PR history shows the full audit → harden → test cycle.
 
 Process, in practice:
 
